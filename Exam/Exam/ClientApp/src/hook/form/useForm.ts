@@ -14,7 +14,7 @@ export default function useForm<TValue>(initialValue: TValue): FormInfo<TValue>{
     
     function checkOnValid(){
         setIsValid(true);
-        setValidationCheck(prevState => !prevState);
+        setValidationCheck(!validationCheck);
     }
     
     return {
