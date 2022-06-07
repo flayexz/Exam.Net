@@ -14,7 +14,7 @@ export function Home() {
         passport: {serial: '', number: '', issuedBy: '', registration: '', issuedDate: new Date()},
         person: {fullName: {firstName: '', secondName: '', patronymic: null}, age: 0},
         creditGoal: CreditGoalDto.consumer,
-        pledge: PledgeDto.guarantee,
+        pledge: PledgeDto.realEstate,
         employment: EmploymentDto.contract,
         isCriminalRecorded: false,
         creditAmount: 0,
@@ -25,8 +25,8 @@ export function Home() {
         e.preventDefault();
         if(form.isValid){
             axios.post("credit",form.form.current).then(r => {
-                let verifyText = r.data.isVerified ? `your credit is successfully verified! Score : ${r.data.score}` 
-                    : `your credit was rejected! Score: ${r.data.score}`
+                let verifyText = r.data.isVerified ? `your credit is successfully verified! Score : ${r.data.score}. percents: ${r.data.percents}` 
+                    : `your credit was rejected! Score: ${r.data.score}.`
                 alert(verifyText);
             })
         }
@@ -127,7 +127,7 @@ export function Home() {
                     <div className="mt-2">
                         <ValidationInput initialValue={''} validations={[]} name={'Was judged'}
                                          formInfo={form}
-                                         setFieldForm={(form, value) => form.isCriminalRecorded }
+                                         setFieldForm={(form, value) => form.isCriminalRecorded}
                                          typeInput="checkbox" isRequired={false}/>
                     </div>
                     <div className="mt-2">

@@ -48,11 +48,11 @@ public class ScoreCalculatorService : IScoreCalculatorService
             var isCriminal = await criminalRecordService.IsCriminalRecorded(passport);
             if (isCriminal)
             {
-                return 15;
+                return 0;
             }
         }
 
-        return 0;
+        return 15;
     }
 
     private int GetEmploymentScores(Employment employment, int age)
